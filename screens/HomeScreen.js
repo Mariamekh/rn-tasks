@@ -12,6 +12,7 @@ import {
   RefreshControl,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import Header from "../shared/Header";
 import Product from "../components/Product";
@@ -20,6 +21,8 @@ import Loading from "../components/Loading";
 const HomeScreen = () => {
   const [items, setItems] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigation = useNavigation();
 
   const loadProductItems = async () => {
     setIsLoading(true);
@@ -64,7 +67,6 @@ const HomeScreen = () => {
             onPress={() =>
               navigation.navigate("ProductDetails", {
                 id: item.id,
-                title: item.title,
               })
             }>
             <Product product={item} />
