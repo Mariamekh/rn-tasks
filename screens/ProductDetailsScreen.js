@@ -9,13 +9,13 @@ import Header from "../shared/Header";
 const ProductDetailsScreen = ({ route }) => {
   const [item, setItem] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  // const { id } = route.params;
-  // console.log(id, "id");
+  const { id } = route.params;
+
   useEffect(() => {
     const loadProductItems = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("https://fakestoreapi.com/products/1");
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const json = await response.json();
 
         setItem(json);
@@ -37,12 +37,12 @@ const ProductDetailsScreen = ({ route }) => {
     );
   }
 
-  console.log(item, "item");
   return (
     <>
       <Header />
-      <ProductModal  style={{ width: 225, height: 225 }}/>
+      {/* <ProductModal style={{ width: 225, height: 225 }} /> */}
       <ProductDetails item={item} />
+      <Button style={{ backgroundColor: "#0E86D4" }} title='Add to cart' />
     </>
   );
 };

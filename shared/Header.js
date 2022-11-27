@@ -4,19 +4,20 @@ import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { defaultStyles } from "../constants/defaultStyles";
 
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ navigation, isMenuButtonVisible = false }) => {
+const Header = ({ isMenuButtonVisible = false }) => {
   //   const openMenu = () => {
   //     navigation.openDrawer();
   //   };
+  const navigation = useNavigation();
 
   const getHeaderLeftIcon = () =>
     isMenuButtonVisible ? (
       <TouchableHighlight
-        onPress={() => navigator.dispatch(DrawerActions.toggleDrawer())}
-      >
+        onPress={() => navigator.dispatch(DrawerActions.toggleDrawer())}>
         <MaterialIcons
-          name="menu"
+          name='menu'
           size={28}
           // onPress={() =>navigation.toggleDrawer()}
           style={styles.icon}
@@ -26,10 +27,10 @@ const Header = ({ navigation, isMenuButtonVisible = false }) => {
       <TouchableHighlight
         style={styles.iconButton}
         underlayColor={defaultStyles.colors.pressLink}
-        onPress={() => navigator.goBack()}
+        // onPress={() => navigation.goBack()}
       >
         <Ionicons
-          name="cart"
+          name='md-arrow-back'
           size={28}
           // onPress={openMenu}
           style={styles.icon}
@@ -44,7 +45,7 @@ const Header = ({ navigation, isMenuButtonVisible = false }) => {
         <Text style={styles.headerText}>Ecommerce Store</Text>
       </View>
       <Ionicons
-        name="cart"
+        name='cart'
         size={28}
         // onPress={openMenu}
         style={styles.icon}
@@ -77,4 +78,3 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
-
