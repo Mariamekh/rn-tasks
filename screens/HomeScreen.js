@@ -18,12 +18,16 @@ import Header from "../shared/Header";
 import Product from "../components/Product";
 import Loading from "../components/Loading";
 import axios from "axios";
+import { Searchbar } from "react-native-paper";
 
 const HomeScreen = () => {
   const [items, setItems] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const navigation = useNavigation();
+
+  const onChangeSearch = (query) => setSearchQuery(query);
 
   const loadProductItems = async () => {
     setIsLoading(true);
@@ -97,7 +101,13 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header isMenuButtonVisible />
+      <Header title='Ecommerce Store' isMenuButtonVisible />
+      <Searchbar
+        placeholder='Search'
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+        style={{ width: "100%", margin: 20 }}
+      />
       <FlatList
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={loadProductItems} />

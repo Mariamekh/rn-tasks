@@ -6,7 +6,7 @@ import { defaultStyles } from "../constants/defaultStyles";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ isMenuButtonVisible = false }) => {
+const Header = ({ isMenuButtonVisible = false, title }) => {
   //   const openMenu = () => {
   //     navigation.openDrawer();
   //   };
@@ -35,14 +35,16 @@ const Header = ({ isMenuButtonVisible = false }) => {
     <View style={styles.header}>
       {getHeaderLeftIcon()}
       <View>
-        <Text style={styles.headerText}>Ecommerce Store</Text>
+        <Text style={styles.headerText}>{title}</Text>
       </View>
-      <Ionicons
-        name='cart'
-        size={28}
-        // onPress={openMenu}
-        style={styles.icon}
-      />
+      <TouchableHighlight>
+        <Ionicons
+          name='cart'
+          size={28}
+          onPress={() => navigation.navigate("Cart")}
+          style={styles.icon}
+        />
+      </TouchableHighlight>
     </View>
   );
 };

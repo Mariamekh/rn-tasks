@@ -12,6 +12,7 @@ import Header from "../shared/Header";
 const ProductDetailsScreen = ({ route }) => {
   const [item, setItem] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { id } = route.params;
   const dispatch = useDispatch();
@@ -42,24 +43,34 @@ const ProductDetailsScreen = ({ route }) => {
     );
   }
 
+  const onAddToCartHandler = () => {
+    setIsModalVisible(true);
+    dispatch(
+      addToCart({
+        id: item.id,
+        title: item.title,
+        image: item.image,
+        price: item.price,
+      })
+    );
+  };
+
   return (
     <>
       <Header />
-      {/* <ProductModal style={{ width: 225, height: 225 }} /> */}
       <ProductDetails item={item} />
       <Button
-        onPress={() =>
-          dispatch(
-            addToCart({
-              id: item.id,
-              title: item.title,
-              image: item.image,
-              price: item.price,
-            })
-          )
-        }
+        onPress={onAddToCartHandler}
         style={{ backgroundColor: "#0E86D4" }}
-        title='Add to cart'
+        title='Add to Cart'
+      />
+      <ProductModal
+        modalType='success'
+        description='Product Added To Your Cart'
+        buttonTitle='OK'
+        isButtonVisible
+        setIsVisible={setIsModalVisible}
+        isVisible={isModalVisible}
       />
     </>
   );
