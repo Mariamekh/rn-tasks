@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import HomeScreen from "./HomeScreen";
 import ProductDetailsScreen from "./ProductDetailsScreen";
+import DrawerNavigation from "../components/DrawerNavigation";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,14 +15,12 @@ const Navigation = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={HomeScreen}
-          options={{ title: "Home" }}
-        />
+          component={DrawerNavigation}
+         />
           <Stack.Screen
             name="ProductDetails"
             component={ProductDetailsScreen}
-            options={{ title: "Product" }}
-          />
+           />
       </Stack.Navigator>
     </NavigationContainer>
   );

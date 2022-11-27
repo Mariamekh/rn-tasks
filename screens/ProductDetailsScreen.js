@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import { View, ActivityIndicator, Text } from "react-native";
+import { View, Button, Text } from "react-native";
 import Loading from "../components/Loading";
 import ProductDetails from "../components/ProductDetails";
+import ProductModal from "../components/ProductModal";
+import Header from "../shared/Header";
 
 const ProductDetailsScreen = ({ route }) => {
   const [item, setItem] = useState();
@@ -37,9 +39,11 @@ const ProductDetailsScreen = ({ route }) => {
 
   console.log(item, "item");
   return (
-    <View>
+    <>
+      <Header />
+      <ProductModal  style={{ width: 225, height: 225 }}/>
       <ProductDetails item={item} />
-    </View>
+    </>
   );
 };
 

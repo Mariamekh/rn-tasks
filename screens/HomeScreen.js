@@ -52,7 +52,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header isMenuButtonVisible />
       <FlatList
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={loadProductItems} />
