@@ -38,10 +38,7 @@ function CustomDrawerContent(props) {
         onPress={() => navigation.navigate("HomeScreen")}
         label='My Wish List'
       />
-      <DrawerItem
-        onPress={() => navigation.navigate("HomeScreen")}
-        label='My Cart'
-      />
+      <DrawerItem onPress={() => navigation.navigate("Cart")} label='My Cart' />
       <DrawerItem
         onPress={() => navigation.navigate("HomeScreen")}
         label='My Orders'
@@ -55,18 +52,14 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      // screenOptions={{
-      //   headerShown: false,
-      // }}
+      screenOptions={{
+        headerShown: false,
+      }}
       // useLegacyImplementation={false}
       initialRouteName='Home'
       backBehavior='history'
       drawerContent={(props) => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name='My Profile' component={HomeScreen} />
-      {/*
-      // <Drawer.Screen name='My Wish List' component={HomeScreen} />
-      // <Drawer.Screen name='My Cart' component={ProductDetailsScreen} />
-      // <Drawer.Screen name='My Orders' component={HomeScreen} /> */}
     </Drawer.Navigator>
   );
 };

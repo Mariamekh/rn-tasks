@@ -14,12 +14,11 @@ const Header = ({ isMenuButtonVisible = false }) => {
 
   const getHeaderLeftIcon = () =>
     isMenuButtonVisible ? (
-      <TouchableHighlight
-        onPress={() => navigator.dispatch(DrawerActions.toggleDrawer())}>
+      <TouchableHighlight>
         <MaterialIcons
           name='menu'
           size={28}
-          // onPress={() =>navigation.toggleDrawer()}
+          onPress={() => navigation.toggleDrawer()}
           style={styles.icon}
         />
       </TouchableHighlight>
@@ -27,14 +26,8 @@ const Header = ({ isMenuButtonVisible = false }) => {
       <TouchableHighlight
         style={styles.iconButton}
         underlayColor={defaultStyles.colors.pressLink}
-        // onPress={() => navigation.goBack()}
-      >
-        <Ionicons
-          name='md-arrow-back'
-          size={28}
-          // onPress={openMenu}
-          style={styles.icon}
-        />
+        onPress={() => navigation.goBack()}>
+        <Ionicons name='md-arrow-back' size={28} style={styles.icon} />
       </TouchableHighlight>
     );
 
