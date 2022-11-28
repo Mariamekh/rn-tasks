@@ -14,15 +14,15 @@ const ProductImage = styled.Image`
 const ProductText = styled.Text`
   font-size: 18px;
   line-height: 24px;
-  padding-top: 4 ,
-  paddingBottom: 4,
-  marginBottom: 30,
-  fontSize: 16,
+  padding-top: 4px;
+  paddingbottom: 4px;
+  marginbottom: 30px;
+  fontsize: 16px;
 `;
 
 const ProductTitles = styled.Text`
   font-weight: bold,
-  font-size: 18
+  font-size: 18px;
 `;
 
 const ProductDetails = ({ item }) => {

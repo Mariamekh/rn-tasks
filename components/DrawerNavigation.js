@@ -1,5 +1,4 @@
 import HomeScreen from "../screens/HomeScreen";
-import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
