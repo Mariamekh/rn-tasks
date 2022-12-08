@@ -14,13 +14,8 @@ const Header = ({ isMenuButtonVisible = false, title }) => {
 
   const getHeaderLeftIcon = () =>
     isMenuButtonVisible ? (
-      <TouchableHighlight>
-        <MaterialIcons
-          name='menu'
-          size={28}
-          onPress={() => navigation.toggleDrawer()}
-          style={styles.icon}
-        />
+      <TouchableHighlight onPress={() => navigation.toggleDrawer()}>
+        <MaterialIcons name='menu' size={28} style={styles.icon} />
       </TouchableHighlight>
     ) : (
       <TouchableHighlight
@@ -41,7 +36,7 @@ const Header = ({ isMenuButtonVisible = false, title }) => {
         <Ionicons
           name='cart'
           size={28}
-          onPress={() => navigation.navigate("Cart")}
+          onPress={() => navigation.navigate("MyCart")}
           style={styles.icon}
         />
       </TouchableHighlight>

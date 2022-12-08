@@ -9,7 +9,7 @@ const FullCart = () => {
     <View>
       <Text>Your cart is Full</Text>
       <Button
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("HomeScreen")}
         title='Proceed to Payment'
       />
     </View>

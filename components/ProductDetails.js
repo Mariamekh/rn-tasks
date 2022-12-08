@@ -26,20 +26,21 @@ const ProductTitles = styled.Text`
 `;
 
 const ProductDetails = ({ item }) => {
+  console.log(item.attributes, "attributes");
   return (
     <View>
-      <ProductImage source={{ uri: item.image }} />
-      <Text>{item.title}</Text>
+      {/* <ProductImage source={{ uri: item.image }} /> */}
+      <Text>{item.attributes.name}</Text>
       <Text
         style={{
           fontSize: defaultStyles.fontSize.medium,
           fontWeight: "bold",
         }}>
-        {item.price}
+        {item.attributes.price}
       </Text>
       <ProductTitles>Select Color</ProductTitles>
       <ProductTitles>Description</ProductTitles>
-      <ProductText>{item.description}</ProductText>
+      <ProductText>{item.attributes.description}</ProductText>
     </View>
   );
 };

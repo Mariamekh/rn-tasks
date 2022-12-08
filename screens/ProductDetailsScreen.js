@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { View, Button, Text } from "react-native";
+import { View, Button, Text, Alert } from "react-native";
+import axios from "axios";
 import { useDispatch } from "react-redux";
+
 import { addToCart } from "../redux/cartSlice";
 
 import Loading from "../components/Loading";
@@ -19,12 +21,18 @@ const ProductDetailsScreen = ({ route }) => {
 
   useEffect(() => {
     const loadProductItems = async () => {
-      setIsLoading(true);
       try {
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-        const json = await response.json();
-
-        setItem(json);
+        setIsLoading(true);
+        axios
+          .get(
+            `https://demo.spreecommerce.org/api/v2/storefront/products/${id}`
+          )
+          .then(({ data }) => {
+            setItem(data.data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       } catch (error) {
         Alert.alert("Error", error.message, [{ text: "OK" }]);
       } finally {
@@ -34,6 +42,8 @@ const ProductDetailsScreen = ({ route }) => {
 
     loadProductItems();
   }, []);
+
+  console.log(item, "item at axios");
 
   if (isLoading) {
     return (
@@ -48,9 +58,9 @@ const ProductDetailsScreen = ({ route }) => {
     dispatch(
       addToCart({
         id: item.id,
-        title: item.title,
-        image: item.image,
-        price: item.price,
+        title: item.attributes.name,
+        // image: item.image,
+        price: item.attributes.price,
       })
     );
   };
@@ -58,7 +68,7 @@ const ProductDetailsScreen = ({ route }) => {
   return (
     <>
       <Header />
-      <ProductDetails item={item} />
+      {item && <ProductDetails item={item} />}
       <Button
         onPress={onAddToCartHandler}
         style={{ backgroundColor: "#0E86D4" }}

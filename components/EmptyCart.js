@@ -9,7 +9,10 @@ const EmptyCart = () => {
     <View>
       <Text>Your cart is Empty</Text>
       <Text>Add product in your cart now</Text>
-      <Button onPress={() => navigation.navigate("Home")} title='Shop Now' />
+      <Button
+        onPress={() => navigation.navigate("HomeScreen")}
+        title='Shop Now'
+      />
     </View>
   );
 };

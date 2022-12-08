@@ -18,13 +18,16 @@ const Product = ({ product }) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageWrapper}>
-        <Image source={{ uri: product.image }} style={styles.image} />
+        {/* <Image
+          source={{ uri: product.relationships.images }}
+          style={styles.image}
+        /> */}
       </View>
-      <Text style={styles.title}>{truncateTitle(product.title)}</Text>
+      <Text style={styles.title}>{truncateTitle(product.attributes.name)}</Text>
       <View style={styles.priceWrapper}>
-        <Text style={styles.price}>{product.price}</Text>
-        <Text style={styles.oldPrice}>{product.rating.rate}</Text>
-        <Text style={styles.discount}>{`${product.rating.count}% Off`}</Text>
+        <Text style={styles.price}>{product.attributes.price}</Text>
+        {/* <Text style={styles.oldPrice}>{product.rating.rate}</Text> */}
+        {/* <Text style={styles.discount}>{`${product.rating.count}% Off`}</Text> */}
       </View>
     </View>
   );

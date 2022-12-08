@@ -11,7 +11,7 @@ const MyCart = () => {
   return (
     <View>
       <Header title='My Cart' />
-      {cart.length ? <FullCart /> : <EmptyCart />}
+      {cart ? <FullCart /> : <EmptyCart />}
     </View>
   );
 };
